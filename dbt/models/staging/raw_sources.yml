@@ -1,0 +1,1308 @@
+version: 2
+
+sources:
+  - name: financial_modeling_prep
+    description: Raw data from the financial modeling prep API
+    tables:
+      - name: balance_sheet
+      - name: cashflow
+      - name: financial_growth
+      - name: income_stmt
+      - name: quote
+      - name: profile
+  - name: alphavantage
+    description: Raw data from the alphavantage API, which longer time horizon into the past
+    tables:
+      - name: balance_sheets_annually
+      - name: cashflows_annually
+      - name: income_stmts_annually
+  - name: yahoo_finance
+    description: Raw data from the yahoo finance API
+    tables:
+      - name: balance_sheet_quarterly
+        columns:
+          - name: financial_assets_designatedas_fair_value_through_profitor_loss_total
+            description: ""
+            data_type: FLOAT
+          - name: non_current_note_receivables
+            description: ""
+            data_type: FLOAT
+          - name: defined_pension_benefit
+            description: ""
+            data_type: FLOAT
+          - name: preferred_securities_outside_stock_equity
+            description: ""
+            data_type: FLOAT
+          - name: interest_payable
+            description: ""
+            data_type: FLOAT
+          - name: accrued_interest_receivable
+            description: ""
+            data_type: FLOAT
+          - name: duefrom_related_parties_current
+            description: ""
+            data_type: FLOAT
+          - name: dueto_related_parties_current
+            description: ""
+            data_type: FLOAT
+          - name: gross_accounts_receivable
+            description: ""
+            data_type: FLOAT
+          - name: allowance_for_doubtful_accounts_receivable
+            description: ""
+            data_type: FLOAT
+          - name: other_investments
+            description: ""
+            data_type: FLOAT
+          - name: line_of_credit
+            description: ""
+            data_type: FLOAT
+          - name: minimum_pension_liabilities
+            description: ""
+            data_type: FLOAT
+          - name: unrealized_gain_loss
+            description: ""
+            data_type: FLOAT
+          - name: current_deferred_assets
+            description: ""
+            data_type: FLOAT
+          - name: investmentsin_associatesat_cost
+            description: ""
+            data_type: FLOAT
+          - name: investments_and_advances
+            description: ""
+            data_type: FLOAT
+          - name: non_current_accounts_receivable
+            description: ""
+            data_type: FLOAT
+          - name: non_current_prepaid_assets
+            description: ""
+            data_type: FLOAT
+          - name: commercial_paper
+            description: ""
+            data_type: FLOAT
+          - name: non_current_deferred_liabilities
+            description: ""
+            data_type: FLOAT
+          - name: employee_benefits
+            description: ""
+            data_type: FLOAT
+          - name: other_receivables
+            description: ""
+            data_type: FLOAT
+          - name: work_in_process
+            description: ""
+            data_type: FLOAT
+          - name: receivables
+            description: ""
+            data_type: FLOAT
+          - name: inventory
+            description: ""
+            data_type: FLOAT
+          - name: assets_held_for_sale_current
+            description: ""
+            data_type: FLOAT
+          - name: total_liabilities_net_minority_interest
+            description: ""
+            data_type: FLOAT
+          - name: goodwill
+            description: ""
+            data_type: FLOAT
+          - name: investment_properties
+            description: ""
+            data_type: FLOAT
+          - name: common_stock_equity
+            description: ""
+            data_type: FLOAT
+          - name: long_term_equity_investment
+            description: ""
+            data_type: FLOAT
+          - name: investmentin_financial_assets
+            description: ""
+            data_type: FLOAT
+          - name: financial_assets
+            description: ""
+            data_type: FLOAT
+          - name: non_current_deferred_taxes_assets
+            description: ""
+            data_type: FLOAT
+          - name: common_stock
+            description: ""
+            data_type: FLOAT
+          - name: current_debt
+            description: ""
+            data_type: FLOAT
+          - name: total_tax_payable
+            description: ""
+            data_type: FLOAT
+          - name: other_inventories
+            description: ""
+            data_type: FLOAT
+          - name: current_liabilities
+            description: ""
+            data_type: FLOAT
+          - name: long_term_provisions
+            description: ""
+            data_type: FLOAT
+          - name: prepaid_assets
+            description: ""
+            data_type: FLOAT
+          - name: non_current_deferred_revenue
+            description: ""
+            data_type: FLOAT
+          - name: accumulated_depreciation
+            description: ""
+            data_type: FLOAT
+          - name: invested_capital
+            description: ""
+            data_type: FLOAT
+          - name: tradeand_other_payables_non_current
+            description: ""
+            data_type: FLOAT
+          - name: treasury_stock
+            description: ""
+            data_type: FLOAT
+          - name: non_current_accrued_expenses
+            description: ""
+            data_type: FLOAT
+          - name: other_equity_interest
+            description: ""
+            data_type: FLOAT
+      - name: balance_sheet_yearly
+        columns:
+          - name: financial_assets_designatedas_fair_value_through_profitor_loss_total
+            description: ""
+            data_type: FLOAT
+          - name: non_current_note_receivables
+            description: ""
+            data_type: FLOAT
+          - name: defined_pension_benefit
+            description: ""
+            data_type: FLOAT
+          - name: preferred_securities_outside_stock_equity
+            description: ""
+            data_type: FLOAT
+          - name: interest_payable
+            description: ""
+            data_type: FLOAT
+          - name: accrued_interest_receivable
+            description: ""
+            data_type: FLOAT
+          - name: duefrom_related_parties_current
+            description: ""
+            data_type: FLOAT
+          - name: dueto_related_parties_current
+            description: ""
+            data_type: FLOAT
+          - name: gross_accounts_receivable
+            description: ""
+            data_type: FLOAT
+          - name: allowance_for_doubtful_accounts_receivable
+            description: ""
+            data_type: FLOAT
+          - name: other_investments
+            description: ""
+            data_type: FLOAT
+          - name: line_of_credit
+            description: ""
+            data_type: FLOAT
+          - name: minimum_pension_liabilities
+            description: ""
+            data_type: FLOAT
+          - name: unrealized_gain_loss
+            description: ""
+            data_type: FLOAT
+          - name: current_deferred_assets
+            description: ""
+            data_type: FLOAT
+          - name: investmentsin_associatesat_cost
+            description: ""
+            data_type: FLOAT
+          - name: investments_and_advances
+            description: ""
+            data_type: FLOAT
+          - name: non_current_accounts_receivable
+            description: ""
+            data_type: FLOAT
+          - name: non_current_prepaid_assets
+            description: ""
+            data_type: FLOAT
+          - name: commercial_paper
+            description: ""
+            data_type: FLOAT
+          - name: non_current_deferred_liabilities
+            description: ""
+            data_type: FLOAT
+          - name: employee_benefits
+            description: ""
+            data_type: FLOAT
+          - name: other_receivables
+            description: ""
+            data_type: FLOAT
+          - name: work_in_process
+            description: ""
+            data_type: FLOAT
+          - name: receivables
+            description: ""
+            data_type: FLOAT
+          - name: inventory
+            description: ""
+            data_type: FLOAT
+          - name: assets_held_for_sale_current
+            description: ""
+            data_type: FLOAT
+          - name: total_liabilities_net_minority_interest
+            description: ""
+            data_type: FLOAT
+          - name: goodwill
+            description: ""
+            data_type: FLOAT
+          - name: investment_properties
+            description: ""
+            data_type: FLOAT
+          - name: common_stock_equity
+            description: ""
+            data_type: FLOAT
+          - name: long_term_equity_investment
+            description: ""
+            data_type: FLOAT
+          - name: investmentin_financial_assets
+            description: ""
+            data_type: FLOAT
+          - name: financial_assets
+            description: ""
+            data_type: FLOAT
+          - name: non_current_deferred_taxes_assets
+            description: ""
+            data_type: FLOAT
+          - name: common_stock
+            description: ""
+            data_type: FLOAT
+          - name: current_debt
+            description: ""
+            data_type: FLOAT
+          - name: total_tax_payable
+            description: ""
+            data_type: FLOAT
+          - name: other_inventories
+            description: ""
+            data_type: FLOAT
+          - name: current_liabilities
+            description: ""
+            data_type: FLOAT
+          - name: long_term_provisions
+            description: ""
+            data_type: FLOAT
+          - name: prepaid_assets
+            description: ""
+            data_type: FLOAT
+          - name: non_current_deferred_revenue
+            description: ""
+            data_type: FLOAT
+          - name: accumulated_depreciation
+            description: ""
+            data_type: FLOAT
+          - name: invested_capital
+            description: ""
+            data_type: FLOAT
+          - name: tradeand_other_payables_non_current
+            description: ""
+            data_type: FLOAT
+          - name: treasury_stock
+            description: ""
+            data_type: FLOAT
+          - name: non_current_accrued_expenses
+            description: ""
+            data_type: FLOAT
+          - name: other_equity_interest
+            description: ""
+            data_type: FLOAT
+      - name: cash_flow_quarterly
+        columns:
+          - name: unrealized_gain_loss_on_investment_securities
+            description: ""
+            data_type: FLOAT
+          - name: purchase_of_investment_properties
+            description: ""
+            data_type: FLOAT
+          - name: sale_of_investment_properties
+            description: ""
+            data_type: FLOAT
+          - name: net_investment_properties_purchase_and_sale
+            description: ""
+            data_type: FLOAT
+          - name: interest_paid_cff
+            description: ""
+            data_type: FLOAT
+          - name: change_in_prepaid_assets
+            description: ""
+            data_type: FLOAT
+          - name: gain_loss_on_sale_of_ppe
+            description: ""
+            data_type: FLOAT
+          - name: dividend_received_cfo
+            description: ""
+            data_type: FLOAT
+          - name: change_in_income_tax_payable
+            description: ""
+            data_type: FLOAT
+          - name: receiptsfrom_customers
+            description: ""
+            data_type: FLOAT
+          - name: depreciation
+            description: ""
+            data_type: FLOAT
+          - name: classesof_cash_receiptsfrom_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: cash_flowsfromusedin_operating_activities_direct
+            description: ""
+            data_type: FLOAT
+          - name: earnings_losses_from_equity_investments
+            description: ""
+            data_type: FLOAT
+          - name: purchase_of_intangibles
+            description: ""
+            data_type: FLOAT
+          - name: sale_of_business
+            description: ""
+            data_type: FLOAT
+          - name: net_issuance_payments_of_debt
+            description: ""
+            data_type: FLOAT
+          - name: other_cash_paymentsfrom_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: asset_impairment_charge
+            description: ""
+            data_type: FLOAT
+          - name: income_tax_paid_supplemental_data
+            description: ""
+            data_type: FLOAT
+          - name: short_term_debt_issuance
+            description: ""
+            data_type: FLOAT
+          - name: short_term_debt_payments
+            description: ""
+            data_type: FLOAT
+          - name: cash_from_discontinued_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: sale_of_intangibles
+            description: ""
+            data_type: FLOAT
+          - name: cash_from_discontinued_investing_activities
+            description: ""
+            data_type: FLOAT
+          - name: pension_and_employee_benefit_expense
+            description: ""
+            data_type: FLOAT
+          - name: deferred_income_tax
+            description: ""
+            data_type: FLOAT
+          - name: issuance_of_debt
+            description: ""
+            data_type: FLOAT
+          - name: change_in_other_current_liabilities
+            description: ""
+            data_type: FLOAT
+          - name: repurchase_of_capital_stock
+            description: ""
+            data_type: FLOAT
+          - name: taxes_refund_paid
+            description: ""
+            data_type: FLOAT
+          - name: end_cash_position
+            description: ""
+            data_type: FLOAT
+          - name: capital_expenditure_reported
+            description: ""
+            data_type: FLOAT
+          - name: common_stock_dividend_paid
+            description: ""
+            data_type: FLOAT
+          - name: net_intangibles_purchase_and_sale
+            description: ""
+            data_type: FLOAT
+          - name: long_term_debt_issuance
+            description: ""
+            data_type: FLOAT
+          - name: net_short_term_debt_issuance
+            description: ""
+            data_type: FLOAT
+          - name: cash_dividends_paid
+            description: ""
+            data_type: FLOAT
+          - name: other_cash_adjustment_outside_changein_cash
+            description: ""
+            data_type: FLOAT
+          - name: industry
+            description: ""
+            data_type: STRING
+          - name: other_cash_receiptsfrom_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: net_income_from_continuing_operations
+            description: ""
+            data_type: FLOAT
+          - name: classesof_cash_payments
+            description: ""
+            data_type: FLOAT
+          - name: other_cash_adjustment_inside_changein_cash
+            description: ""
+            data_type: FLOAT
+          - name: net_foreign_currency_exchange_gain_loss
+            description: ""
+            data_type: FLOAT
+          - name: interest_paid_supplemental_data
+            description: ""
+            data_type: FLOAT
+          - name: change_in_accrued_expense
+            description: ""
+            data_type: FLOAT
+          - name: cash_flow_from_continuing_investing_activities
+            description: ""
+            data_type: FLOAT
+          - name: deferred_tax
+            description: ""
+            data_type: FLOAT
+      - name: cash_flow_yearly
+        columns:
+          - name: unrealized_gain_loss_on_investment_securities
+            description: ""
+            data_type: FLOAT
+          - name: purchase_of_investment_properties
+            description: ""
+            data_type: FLOAT
+          - name: sale_of_investment_properties
+            description: ""
+            data_type: FLOAT
+          - name: net_investment_properties_purchase_and_sale
+            description: ""
+            data_type: FLOAT
+          - name: interest_paid_cff
+            description: ""
+            data_type: FLOAT
+          - name: change_in_prepaid_assets
+            description: ""
+            data_type: FLOAT
+          - name: gain_loss_on_sale_of_ppe
+            description: ""
+            data_type: FLOAT
+          - name: dividend_received_cfo
+            description: ""
+            data_type: FLOAT
+          - name: change_in_income_tax_payable
+            description: ""
+            data_type: FLOAT
+          - name: receiptsfrom_customers
+            description: ""
+            data_type: FLOAT
+          - name: depreciation
+            description: ""
+            data_type: FLOAT
+          - name: classesof_cash_receiptsfrom_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: cash_flowsfromusedin_operating_activities_direct
+            description: ""
+            data_type: FLOAT
+          - name: earnings_losses_from_equity_investments
+            description: ""
+            data_type: FLOAT
+          - name: purchase_of_intangibles
+            description: ""
+            data_type: FLOAT
+          - name: sale_of_business
+            description: ""
+            data_type: FLOAT
+          - name: net_issuance_payments_of_debt
+            description: ""
+            data_type: FLOAT
+          - name: other_cash_paymentsfrom_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: asset_impairment_charge
+            description: ""
+            data_type: FLOAT
+          - name: income_tax_paid_supplemental_data
+            description: ""
+            data_type: FLOAT
+          - name: short_term_debt_issuance
+            description: ""
+            data_type: FLOAT
+          - name: short_term_debt_payments
+            description: ""
+            data_type: FLOAT
+          - name: cash_from_discontinued_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: sale_of_intangibles
+            description: ""
+            data_type: FLOAT
+          - name: cash_from_discontinued_investing_activities
+            description: ""
+            data_type: FLOAT
+          - name: pension_and_employee_benefit_expense
+            description: ""
+            data_type: FLOAT
+          - name: deferred_income_tax
+            description: ""
+            data_type: FLOAT
+          - name: issuance_of_debt
+            description: ""
+            data_type: FLOAT
+          - name: change_in_other_current_liabilities
+            description: ""
+            data_type: FLOAT
+          - name: repurchase_of_capital_stock
+            description: ""
+            data_type: FLOAT
+          - name: taxes_refund_paid
+            description: ""
+            data_type: FLOAT
+          - name: end_cash_position
+            description: ""
+            data_type: FLOAT
+          - name: capital_expenditure_reported
+            description: ""
+            data_type: FLOAT
+          - name: common_stock_dividend_paid
+            description: ""
+            data_type: FLOAT
+          - name: net_intangibles_purchase_and_sale
+            description: ""
+            data_type: FLOAT
+          - name: long_term_debt_issuance
+            description: ""
+            data_type: FLOAT
+          - name: net_short_term_debt_issuance
+            description: ""
+            data_type: FLOAT
+          - name: cash_dividends_paid
+            description: ""
+            data_type: FLOAT
+          - name: other_cash_adjustment_outside_changein_cash
+            description: ""
+            data_type: FLOAT
+          - name: industry
+            description: ""
+            data_type: STRING
+          - name: other_cash_receiptsfrom_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: net_income_from_continuing_operations
+            description: ""
+            data_type: FLOAT
+          - name: classesof_cash_payments
+            description: ""
+            data_type: FLOAT
+          - name: other_cash_adjustment_inside_changein_cash
+            description: ""
+            data_type: FLOAT
+          - name: net_foreign_currency_exchange_gain_loss
+            description: ""
+            data_type: FLOAT
+          - name: interest_paid_supplemental_data
+            description: ""
+            data_type: FLOAT
+          - name: change_in_accrued_expense
+            description: ""
+            data_type: FLOAT
+          - name: cash_flow_from_continuing_investing_activities
+            description: ""
+            data_type: FLOAT
+          - name: deferred_tax
+            description: ""
+            data_type: FLOAT
+      - name: income_statement_quarterly
+        columns:
+          - name: rent_expense_supplemental
+            description: ""
+            data_type: FLOAT
+          - name: gain_on_sale_of_ppe
+            description: ""
+            data_type: FLOAT
+          - name: average_dilution_earnings
+            description: ""
+            data_type: FLOAT
+          - name: earnings_from_equity_interest_net_of_tax
+            description: ""
+            data_type: FLOAT
+          - name: salaries_and_wages
+            description: ""
+            data_type: FLOAT
+          - name: amortization
+            description: ""
+            data_type: FLOAT
+          - name: depreciation_and_amortization_in_income_statement
+            description: ""
+            data_type: FLOAT
+          - name: depreciation_amortization_depletion_income_statement
+            description: ""
+            data_type: FLOAT
+          - name: impairment_of_capital_assets
+            description: ""
+            data_type: FLOAT
+          - name: other_taxes
+            description: ""
+            data_type: FLOAT
+          - name: gain_on_sale_of_business
+            description: ""
+            data_type: FLOAT
+          - name: net_policyholder_benefits_and_claims
+            description: ""
+            data_type: FLOAT
+          - name: earnings_from_equity_interest
+            description: ""
+            data_type: FLOAT
+          - name: write_off
+            description: ""
+            data_type: FLOAT
+          - name: total_other_finance_cost
+            description: ""
+            data_type: FLOAT
+          - name: gain_on_sale_of_security
+            description: ""
+            data_type: FLOAT
+          - name: restructuring_and_mergern_acquisition
+            description: ""
+            data_type: FLOAT
+          - name: special_income_charges
+            description: ""
+            data_type: FLOAT
+          - name: other_operating_expenses
+            description: ""
+            data_type: FLOAT
+          - name: minority_interests
+            description: ""
+            data_type: FLOAT
+          - name: preferred_stock_dividends
+            description: ""
+            data_type: FLOAT
+          - name: otherunder_preferred_stock_dividend
+            description: ""
+            data_type: FLOAT
+          - name: net_income_from_continuing_and_discontinued_operation
+            description: ""
+            data_type: FLOAT
+          - name: country
+            description: ""
+            data_type: STRING
+          - name: total_revenue
+            description: ""
+            data_type: FLOAT
+          - name: other_gand_a
+            description: ""
+            data_type: FLOAT
+          - name: general_and_administrative_expense
+            description: ""
+            data_type: FLOAT
+          - name: net_income_discontinuous_operations
+            description: ""
+            data_type: FLOAT
+          - name: total_expenses
+            description: ""
+            data_type: FLOAT
+          - name: selling_and_marketing_expense
+            description: ""
+            data_type: FLOAT
+          - name: selling_general_and_administration
+            description: ""
+            data_type: FLOAT
+          - name: operating_expense
+            description: ""
+            data_type: FLOAT
+          - name: interest_income_non_operating
+            description: ""
+            data_type: FLOAT
+          - name: reconciled_depreciation
+            description: ""
+            data_type: FLOAT
+          - name: reconciled_cost_of_revenue
+            description: ""
+            data_type: FLOAT
+          - name: interest_expense_non_operating
+            description: ""
+            data_type: FLOAT
+          - name: research_and_development
+            description: ""
+            data_type: FLOAT
+          - name: pretax_income
+            description: ""
+            data_type: FLOAT
+          - name: tax_provision
+            description: ""
+            data_type: FLOAT
+          - name: net_income_continuous_operations
+            description: ""
+            data_type: FLOAT
+          - name: net_income_including_noncontrolling_interests
+            description: ""
+            data_type: FLOAT
+          - name: diluted_eps
+            description: ""
+            data_type: FLOAT
+          - name: diluted_ni_availto_com_stockholders
+            description: ""
+            data_type: FLOAT
+          - name: other_special_charges
+            description: ""
+            data_type: FLOAT
+          - name: cost_of_revenue
+            description: ""
+            data_type: FLOAT
+          - name: basic_eps
+            description: ""
+            data_type: FLOAT
+          - name: operating_revenue
+            description: ""
+            data_type: FLOAT
+          - name: gross_profit
+            description: ""
+            data_type: FLOAT
+          - name: total_unusual_items_excluding_goodwill
+            description: ""
+            data_type: FLOAT
+
+        columns:
+          - name: unrealized_gain_loss_on_investment_securities
+            description: ""
+            data_type: FLOAT
+          - name: purchase_of_investment_properties
+            description: ""
+            data_type: FLOAT
+          - name: sale_of_investment_properties
+            description: ""
+            data_type: FLOAT
+          - name: net_investment_properties_purchase_and_sale
+            description: ""
+            data_type: FLOAT
+          - name: interest_paid_cff
+            description: ""
+            data_type: FLOAT
+          - name: change_in_prepaid_assets
+            description: ""
+            data_type: FLOAT
+          - name: gain_loss_on_sale_of_ppe
+            description: ""
+            data_type: FLOAT
+          - name: dividend_received_cfo
+            description: ""
+            data_type: FLOAT
+          - name: change_in_income_tax_payable
+            description: ""
+            data_type: FLOAT
+          - name: receiptsfrom_customers
+            description: ""
+            data_type: FLOAT
+          - name: depreciation
+            description: ""
+            data_type: FLOAT
+          - name: classesof_cash_receiptsfrom_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: cash_flowsfromusedin_operating_activities_direct
+            description: ""
+            data_type: FLOAT
+          - name: earnings_losses_from_equity_investments
+            description: ""
+            data_type: FLOAT
+          - name: purchase_of_intangibles
+            description: ""
+            data_type: FLOAT
+          - name: sale_of_business
+            description: ""
+            data_type: FLOAT
+          - name: net_issuance_payments_of_debt
+            description: ""
+            data_type: FLOAT
+          - name: other_cash_paymentsfrom_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: asset_impairment_charge
+            description: ""
+            data_type: FLOAT
+          - name: income_tax_paid_supplemental_data
+            description: ""
+            data_type: FLOAT
+          - name: short_term_debt_issuance
+            description: ""
+            data_type: FLOAT
+          - name: short_term_debt_payments
+            description: ""
+            data_type: FLOAT
+          - name: cash_from_discontinued_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: sale_of_intangibles
+            description: ""
+            data_type: FLOAT
+          - name: cash_from_discontinued_investing_activities
+            description: ""
+            data_type: FLOAT
+          - name: pension_and_employee_benefit_expense
+            description: ""
+            data_type: FLOAT
+          - name: deferred_income_tax
+            description: ""
+            data_type: FLOAT
+          - name: issuance_of_debt
+            description: ""
+            data_type: FLOAT
+          - name: change_in_other_current_liabilities
+            description: ""
+            data_type: FLOAT
+          - name: repurchase_of_capital_stock
+            description: ""
+            data_type: FLOAT
+          - name: taxes_refund_paid
+            description: ""
+            data_type: FLOAT
+          - name: end_cash_position
+            description: ""
+            data_type: FLOAT
+          - name: capital_expenditure_reported
+            description: ""
+            data_type: FLOAT
+          - name: common_stock_dividend_paid
+            description: ""
+            data_type: FLOAT
+          - name: net_intangibles_purchase_and_sale
+            description: ""
+            data_type: FLOAT
+          - name: long_term_debt_issuance
+            description: ""
+            data_type: FLOAT
+          - name: net_short_term_debt_issuance
+            description: ""
+            data_type: FLOAT
+          - name: cash_dividends_paid
+            description: ""
+            data_type: FLOAT
+          - name: other_cash_adjustment_outside_changein_cash
+            description: ""
+            data_type: FLOAT
+          - name: industry
+            description: ""
+            data_type: STRING
+          - name: other_cash_receiptsfrom_operating_activities
+            description: ""
+            data_type: FLOAT
+          - name: net_income_from_continuing_operations
+            description: ""
+            data_type: FLOAT
+          - name: classesof_cash_payments
+            description: ""
+            data_type: FLOAT
+          - name: other_cash_adjustment_inside_changein_cash
+            description: ""
+            data_type: FLOAT
+          - name: net_foreign_currency_exchange_gain_loss
+            description: ""
+            data_type: FLOAT
+          - name: interest_paid_supplemental_data
+            description: ""
+            data_type: FLOAT
+          - name: change_in_accrued_expense
+            description: ""
+            data_type: FLOAT
+          - name: cash_flow_from_continuing_investing_activities
+            description: ""
+            data_type: FLOAT
+          - name: deferred_tax
+            description: ""
+            data_type: FLOAT
+      - name: income_statement_yearly
+        columns:
+          - name: rent_expense_supplemental
+            description: ""
+            data_type: FLOAT
+          - name: gain_on_sale_of_ppe
+            description: ""
+            data_type: FLOAT
+          - name: average_dilution_earnings
+            description: ""
+            data_type: FLOAT
+          - name: earnings_from_equity_interest_net_of_tax
+            description: ""
+            data_type: FLOAT
+          - name: salaries_and_wages
+            description: ""
+            data_type: FLOAT
+          - name: amortization
+            description: ""
+            data_type: FLOAT
+          - name: depreciation_and_amortization_in_income_statement
+            description: ""
+            data_type: FLOAT
+          - name: depreciation_amortization_depletion_income_statement
+            description: ""
+            data_type: FLOAT
+          - name: impairment_of_capital_assets
+            description: ""
+            data_type: FLOAT
+          - name: other_taxes
+            description: ""
+            data_type: FLOAT
+          - name: gain_on_sale_of_business
+            description: ""
+            data_type: FLOAT
+          - name: net_policyholder_benefits_and_claims
+            description: ""
+            data_type: FLOAT
+          - name: earnings_from_equity_interest
+            description: ""
+            data_type: FLOAT
+          - name: write_off
+            description: ""
+            data_type: FLOAT
+          - name: total_other_finance_cost
+            description: ""
+            data_type: FLOAT
+          - name: gain_on_sale_of_security
+            description: ""
+            data_type: FLOAT
+          - name: restructuring_and_mergern_acquisition
+            description: ""
+            data_type: FLOAT
+          - name: special_income_charges
+            description: ""
+            data_type: FLOAT
+          - name: other_operating_expenses
+            description: ""
+            data_type: FLOAT
+          - name: minority_interests
+            description: ""
+            data_type: FLOAT
+          - name: preferred_stock_dividends
+            description: ""
+            data_type: FLOAT
+          - name: otherunder_preferred_stock_dividend
+            description: ""
+            data_type: FLOAT
+          - name: net_income_from_continuing_and_discontinued_operation
+            description: ""
+            data_type: FLOAT
+          - name: country
+            description: ""
+            data_type: STRING
+          - name: total_revenue
+            description: ""
+            data_type: FLOAT
+          - name: other_gand_a
+            description: ""
+            data_type: FLOAT
+          - name: general_and_administrative_expense
+            description: ""
+            data_type: FLOAT
+          - name: net_income_discontinuous_operations
+            description: ""
+            data_type: FLOAT
+          - name: total_expenses
+            description: ""
+            data_type: FLOAT
+          - name: selling_and_marketing_expense
+            description: ""
+            data_type: FLOAT
+          - name: selling_general_and_administration
+            description: ""
+            data_type: FLOAT
+          - name: operating_expense
+            description: ""
+            data_type: FLOAT
+          - name: interest_income_non_operating
+            description: ""
+            data_type: FLOAT
+          - name: reconciled_depreciation
+            description: ""
+            data_type: FLOAT
+          - name: reconciled_cost_of_revenue
+            description: ""
+            data_type: FLOAT
+          - name: interest_expense_non_operating
+            description: ""
+            data_type: FLOAT
+          - name: research_and_development
+            description: ""
+            data_type: FLOAT
+          - name: pretax_income
+            description: ""
+            data_type: FLOAT
+          - name: tax_provision
+            description: ""
+            data_type: FLOAT
+          - name: net_income_continuous_operations
+            description: ""
+            data_type: FLOAT
+          - name: net_income_including_noncontrolling_interests
+            description: ""
+            data_type: FLOAT
+          - name: diluted_eps
+            description: ""
+            data_type: FLOAT
+          - name: diluted_ni_availto_com_stockholders
+            description: ""
+            data_type: FLOAT
+          - name: other_special_charges
+            description: ""
+            data_type: FLOAT
+          - name: cost_of_revenue
+            description: ""
+            data_type: FLOAT
+          - name: basic_eps
+            description: ""
+            data_type: FLOAT
+          - name: operating_revenue
+            description: ""
+            data_type: FLOAT
+          - name: gross_profit
+            description: ""
+            data_type: FLOAT
+          - name: total_unusual_items_excluding_goodwill
+            description: ""
+            data_type: FLOAT
+      
+      - name: company_info
+        columns:
+          - name: address2
+            description: ""
+            data_type: STRING
+          - name: trailingAnnualDividendYield
+            description: ""
+            data_type: FLOAT
+          - name: trailingAnnualDividendRate
+            description: ""
+            data_type: FLOAT
+          - name: lastDividendValue
+            description: ""
+            data_type: FLOAT
+          - name: fiveYearAvgDividendYield
+            description: ""
+            data_type: FLOAT
+          - name: lastDividendDate
+            description: ""
+            data_type: INTEGER
+          - name: dividendRate
+            description: ""
+            data_type: FLOAT
+          - name: zip
+            description: ""
+            data_type: STRING
+          - name: website
+            description: ""
+            data_type: STRING
+          - name: volume
+            description: ""
+            data_type: INTEGER
+          - name: uuid
+            description: ""
+            data_type: STRING
+          - name: underlyingSymbol
+            description: ""
+            data_type: STRING
+          - name: trailingPegRatio
+            description: ""
+            data_type: FLOAT
+          - name: trailingEps
+            description: ""
+            data_type: FLOAT
+          - name: totalRevenue
+            description: ""
+            data_type: INTEGER
+          - name: totalDebt
+            description: ""
+            data_type: INTEGER
+          - name: totalCashPerShare
+            description: ""
+            data_type: FLOAT
+          - name: totalCash
+            description: ""
+            data_type: INTEGER
+          - name: timeZoneFullName
+            description: ""
+            data_type: STRING
+          - name: payoutRatio
+            description: ""
+            data_type: FLOAT
+          - name: ticker
+            description: ""
+            data_type: STRING
+          - name: targetMedianPrice
+            description: ""
+            data_type: FLOAT
+          - name: targetMeanPrice
+            description: ""
+            data_type: FLOAT
+          - name: targetHighPrice
+            description: ""
+            data_type: FLOAT
+          - name: state
+            description: ""
+            data_type: STRING
+          - name: shortName
+            description: ""
+            data_type: STRING
+          - name: debtToEquity
+            description: ""
+            data_type: FLOAT
+          - name: sectorDisp
+            description: ""
+            data_type: STRING
+          - name: regularMarketOpen
+            description: ""
+            data_type: FLOAT
+          - name: regularMarketDayLow
+            description: ""
+            data_type: FLOAT
+          - name: exDividendDate
+            description: ""
+            data_type: INTEGER
+          - name: sharesShort
+            description: ""
+            data_type: INTEGER
+          - name: companyOfficers
+            description: ""
+            data_type: RECORD
+            mode: REPEATED
+          - name: recommendationMean
+            description: ""
+            data_type: FLOAT
+          - name: irWebsite
+            description: ""
+            data_type: STRING
+          - name: regularMarketPreviousClose
+            description: ""
+            data_type: FLOAT
+          - name: exchange
+            description: ""
+            data_type: STRING
+          - name: priceToBook
+            description: ""
+            data_type: FLOAT
+          - name: priceHint
+            description: ""
+            data_type: INTEGER
+          - name: operatingMargins
+            description: ""
+            data_type: FLOAT
+          - name: phone
+            description: ""
+            data_type: STRING
+          - name: revenueGrowth
+            description: ""
+            data_type: FLOAT
+          - name: auditRisk
+            description: ""
+            data_type: INTEGER
+          - name: firstTradeDateEpochUtc
+            description: ""
+            data_type: INTEGER
+          - name: operatingCashflow
+            description: ""
+            data_type: INTEGER
+          - name: sharesPercentSharesOut
+            description: ""
+            data_type: FLOAT
+          - name: sectorKey
+            description: ""
+            data_type: STRING
+          - name: open
+            description: ""
+            data_type: FLOAT
+          - name: lastSplitFactor
+            description: ""
+            data_type: STRING
+          - name: messageBoardId
+            description: ""
+            data_type: STRING
+          - name: enterpriseToEbitda
+            description: ""
+            data_type: FLOAT
+          - name: netIncomeToCommon
+            description: ""
+            data_type: INTEGER
+          - name: dayHigh
+            description: ""
+            data_type: FLOAT
+          - name: maxAge
+            description: ""
+            data_type: INTEGER
+          - name: sharesShortPriorMonth
+            description: ""
+            data_type: INTEGER
+          - name: mostRecentQuarter
+            description: ""
+            data_type: INTEGER
+          - name: returnOnAssets
+            description: ""
+            data_type: FLOAT
+          - name: overallRisk
+            description: ""
+            data_type: INTEGER
+          - name: longName
+            description: ""
+            data_type: STRING
+          - name: lastSplitDate
+            description: ""
+            data_type: INTEGER
+          - name: industryKey
+            description: ""
+            data_type: STRING
+          - name: industry
+            description: ""
+            data_type: STRING
+          - name: trailingPE
+            description: ""
+            data_type: FLOAT
+          - name: industryDisp
+            description: ""
+            data_type: STRING
+          - name: earningsGrowth
+            description: ""
+            data_type: FLOAT
+          - name: impliedSharesOutstanding
+            description: ""
+            data_type: INTEGER
+          - name: profitMargins
+            description: ""
+            data_type: FLOAT
+          - name: twoHundredDayAverage
+            description: ""
+            data_type: FLOAT
+          - name: marketCap
+            description: ""
+            data_type: INTEGER
+          - name: id
+            description: ""
+            data_type: STRING
+          - name: request_timestamp
+            description: ""
+            data_type: DATE
+          - name: heldPercentInstitutions
+            description: ""
+            data_type: FLOAT
+          - name: grossMargins
+            description: ""
+            data_type: FLOAT
+          - name: timeZoneShortName
+            description: ""
+            data_type: STRING
+          - name: quickRatio
+            description: ""
+            data_type: FLOAT
+          - name: forwardEps
+            description: ""
+            data_type: FLOAT
+          - name: dividendYield
+            description: ""
+            data_type: FLOAT
+          - name: floatShares
+            description: ""
+            data_type: INTEGER
+          - name: fullTimeEmployees
+            description: ""
+            data_type: INTEGER
+          - name: earningsQuarterlyGrowth
+            description: ""
+            data_type: FLOAT

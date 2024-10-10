@@ -1,0 +1,11 @@
+[flake8]
+extend-ignore = E203
+exclude =
+    .github,
+    __pycache__,
+    .venv,
+    .vscode,
+    .pytest_cache,
+    infrastructure,
+max-complexity = 10
+max-line-length = 120

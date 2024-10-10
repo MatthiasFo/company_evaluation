@@ -1,0 +1,152 @@
+version: 2
+
+models:
+  - name: current_company_infos
+    description: "Latest company information from FMP and Yahoo sources"
+    columns:
+      - name: id
+        description: "Unique identifier for the company info record"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol of the company"
+        data_tests:
+          - not_null
+          - unique
+      - name: request_timestamp
+        description: "Timestamp of when the data was requested"
+        data_tests:
+          - not_null
+      - name: company_name
+        description: "Name of the company"
+        data_tests:
+          - not_null
+      - name: industry
+        description: "Industry (more finegrained than sector)"
+        data_tests:
+          - not_null
+      - name: sector
+        description: "Sector (general) that the company operates in"
+        data_tests:
+          - not_null
+      - name: country
+        description: "Home country of the company"
+        data_tests:
+          - not_null
+      - name: current_price
+        description: "Current stock price of the company"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: market_cap
+        description: "Market capitalization of the company"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: shares_outstanding
+        description: "Number of outstanding shares"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: earnings_per_share
+        description: "Earnings per share (EPS) of the company"
+        # can be calculated from other data -> no datatests
+      - name: price_earnings_ratio
+        description: "Price-to-earnings (P/E) ratio of the company"
+        # can be calculated from other data -> no datatests
+
+  - name: combined_financial_filings
+    description: "Combined financial filings from FMP and Yahoo sources"
+    columns:
+      - name: filing_id
+        description: "Unique identifier for the financial filing"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol of the company"
+        data_tests:
+          - not_null
+      - name: end_of_period
+        description: "End date of the financial period"
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: "Total revenue for the period"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: net_income
+        description: "Net income (potentially negative)"
+      - name: cost_of_goods_sold
+        description: "Cost of goods sold (positive, potentially null)"
+      - name: selling_general_and_administration 
+        description: "Selling, general, and administrative expenses (positive, potentially null)"
+      - name: free_cash_flow
+        description: "Free cash flow for the period"
+        data_tests:
+          - not_null
+      - name: dividends_paid
+        description: "Dividends paid (negative, potentially null)"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "<= 0"
+              config:
+                where: "dividends_paid is not null"
+      - name: stockholders_equity
+        description: "Total stockholders' equity"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+              config:
+                where: "stockholders_equity is not null"
+      - name: total_assets
+        description: "Total assets of the company"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: accounts_receivable
+        description: "Accounts receivable balance (positive, potentially null)"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+              config:
+                where: "accounts_receivable is not null"
+      - name: cash_and_cash_equivalents
+        description: "Cash and cash equivalents balance (positive)"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+              config:
+                where: "cash_and_cash_equivalents is not null"
+      - name: current_assets
+        description: "Total current assets (positive, potentially null)"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+              config:
+                where: "current_assets is not null"
+      - name: current_liabilities
+        description: "Total current liabilities (positive, potentially null)"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+              config:
+                where: "current_liabilities is not null"
+      - name: inventory
+        description: "Inventory balance (positive, potentially null)"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+              config:
+                where: "inventory is not null"
+      - name: long_term_debt
+        description: "Long-term debt balance (positive, potentially null)"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: revenue_growth
+        description: "Revenue growth rate"
+      - name: shares_growth
+        description: "Growth of company shares"

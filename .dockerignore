@@ -1,0 +1,6 @@
+# .dockerignore
+dbt
+infrastructure
+notebooks
+tests
+.github

@@ -1,0 +1,42 @@
+name: Deploy to Google Cloud Run
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Google Auth
+      uses: 'google-github-actions/auth@v2'
+      with:
+        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+      with:
+        version: 'latest'
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+    - name: Authenticate Docker to Google Container Registry
+      run: gcloud auth configure-docker europe-west1-docker.pkg.dev --quiet 
+
+    - name: Build Docker image
+      run: docker build -t stock-evaluation .
+
+    - name: Tag Docker image
+      run: docker tag stock-evaluation europe-west1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/stock-eval-repo/stock-evaluation
+
+    - name: Push Docker image to Google Artifact Registry
+      run: docker push europe-west1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/stock-eval-repo/stock-evaluation
+
+    - name: Deploy to Google Cloud Run
+      run: gcloud run deploy stock-eval-service --image europe-west1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/stock-eval-repo/stock-evaluation --platform managed --region europe-west1 --allow-unauthenticated --memory 1024Mi --max-instances=2
+
+

@@ -1,0 +1,13 @@
+*.sqlite
+*.cache
+.terraform*
+**/__pycache__/*
+*.scratch.*
+.venv
+.vscode
+.ruff_cache
+.pytest_cache
+
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/dbt.log

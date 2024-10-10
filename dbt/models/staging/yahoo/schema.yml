@@ -1,0 +1,143 @@
+version: 2
+
+models:
+
+  - name: stg_yahoo_company_infos
+    description: "Combined data from different raw sources necessary for ratio analysis and dcf model"
+    columns:
+      - name: id
+        description: "Unique identifier combining date and ticker"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol"
+        data_tests:
+          - not_null
+      - name: company_name
+        description: "Name of the company"
+      - name: sector
+        description: "Sector company operates in"
+        data_tests:
+          - not_null
+      - name: industry
+        description: "Industry company operates in"
+        data_tests:
+          - not_null
+      - name: country
+        description: "Home country of the company"
+        data_tests:
+          - not_null
+      - name: current_price
+        description: "Current stock price"
+      - name: market_cap
+        description: "Market capitalization of the company"
+      - name: shares_outstanding
+        description: "Number of outstanding shares"
+      - name: request_timestamp
+        description: "Timestamp of data request"
+        data_tests:
+          - not_null
+      - name: earnings_per_share
+        description: "Earnings per share"
+        # no data test becasue we can calculate earnings from other data if it is null
+      - name: price_earnings_ratio
+        description: "Price to earnings ratio"
+        # no data tests because for zero earnings the ratio is not defined
+
+  - name: stg_yahoo_cashflows_yearly
+    columns:
+      - name: id
+        description: "Unique identifier for the yearly cash flow entry"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol"
+        data_tests:
+          - not_null
+      - name: country
+        description: "Country of the company"
+      - name: industry
+        description: "Industry of the company"
+      - name: end_of_period
+        description: "End date of the reporting period"
+        data_tests:
+          - not_null
+      - name: free_cash_flow
+        description: "Free cash flow amount"
+      - name: dividends_paid
+        description: "Dividends paid"
+        # no data test as it is combined with preferred stock dividends from income statement
+
+  - name: stg_yahoo_income_stmts_yearly
+    columns:
+      - name: id
+        description: "Unique identifier for the yearly income statement entry"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol"
+        data_tests:
+          - not_null
+      - name: country
+        description: "Country of the company"
+      - name: industry
+        description: "Industry of the company"
+      - name: end_of_period
+        description: "End date of the reporting period"
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: "Total revenue for the period"
+      - name: net_income
+        description: "Net income for the period"
+      - name: cost_of_goods_sold
+        description: "Cost of goods sold"
+      - name: preferred_stock_dividends
+        description: "Preferred stock dividends"
+        # no data test as preferred stock is rarely filled but can be replaced with data from cashflow
+      - name: selling_general_and_administration
+        description: "Selling, general, and administrative expenses"
+
+  - name: stg_yahoo_balance_sheets_yearly
+    columns:
+      - name: id
+        description: "Unique identifier for the yearly balance sheet entry"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol"
+        data_tests:
+          - not_null
+      - name: country
+        description: "Country of the company"
+      - name: industry
+        description: "Industry of the company"
+      - name: end_of_period
+        description: "End date of the reporting period"
+        data_tests:
+          - not_null
+      - name: stockholders_equity
+        description: "Total stockholders' equity"
+      - name: total_assets
+        description: "Total assets of the company"
+      - name: accounts_receivable
+        description: "Accounts receivable balance"
+      - name: allowance_for_doubtful_accounts_receivable
+        # rarely reported and not available on FMP API
+        description: "Allowance for doubtful accounts receivable"
+      - name: cash_and_cash_equivalents
+        description: "Cash and cash equivalents balance"
+      - name: current_assets
+        description: "Total current assets"
+      - name: current_liabilities
+        description: "Total current liabilities"
+      - name: inventory
+        description: "Inventory balance"
+      - name: long_term_debt
+        description: "Long-term debt balance"
+      - name: share_issued
+        description: "Shares issued"

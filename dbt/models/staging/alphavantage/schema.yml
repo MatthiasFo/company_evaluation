@@ -1,0 +1,103 @@
+version: 2
+
+models:
+  - name: stg_alphavantage_balance_sheets
+    description: "Balance sheets data from Alpha Vantage"
+    columns:
+      - name: id
+        description: "Unique identifier for the balance sheet entry"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol"
+        data_tests:
+          - not_null
+      - name: stockholders_equity
+        description: "Total stockholders' equity"
+        data_tests:
+          - not_null
+      - name: total_assets
+        description: "Total assets of the company"
+        data_tests:
+          - not_null
+      - name: accounts_receivable
+        description: "Accounts receivable balance"
+        data_tests:
+          - not_null
+      - name: cash_and_cash_equivalents
+        description: "Cash and cash equivalents balance"
+        data_tests:
+          - not_null
+      - name: current_assets
+        description: "Total current assets"
+        data_tests:
+          - not_null
+      - name: current_liabilities
+        description: "Total current liabilities"
+        data_tests:
+          - not_null
+      - name: inventory
+        description: "Inventory balance"
+        data_tests:
+          - not_null
+      - name: long_term_debt
+        description: "Long-term debt balance"
+        data_tests:
+          - not_null
+      - name: outstanding_shares
+        description: Outstanding common shares
+        data_tests:
+          - not_null
+      - name: end_of_period
+        description: "End date of the reporting period"
+        data_tests:
+          - not_null
+
+  - name: stg_alphavantage_cashflows
+    description: "Cash flows data from Alpha Vantage"
+    columns:
+      - name: id
+        description: "Unique identifier for the cash flow entry"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol"
+        data_tests:
+          - not_null
+      - name: free_cash_flow
+        description: "Free cash flow amount"
+      - name: dividends_paid
+        description: "Dividends paid"
+        data_tests:
+          - not_null
+      - name: end_of_period
+        description: "End date of the reporting period"
+        data_tests:
+          - not_null
+
+  - name: stg_alphavantage_income_stmts
+    description: "Income statements data from Alpha Vantage"
+    columns:
+      - name: id
+        description: "Unique identifier for the income statement entry"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol"
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: "Total revenue for the period"
+      - name: net_income
+        description: "Net income for the period"
+      - name: cost_of_goods_sold
+        description: "Cost of goods sold"
+      - name: selling_general_and_administration
+        description: "Selling, general, and administrative expenses"
+      - name: end_of_period
+        description: "End date of the reporting period"
+        data_tests:
+          - not_null

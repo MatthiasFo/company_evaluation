@@ -1,0 +1,30 @@
+[
+    {
+        "id": "2024-09-08_AAPL",
+        "ticker": "AAPL",
+        "request_timestamp": "2024-09-08T00:00:00",
+        "company_name": "Apple Inc.",
+        "sector": "Technology",
+        "industry": "Software - Application",
+        "country": "United States",
+        "current_price": "220.82",
+        "market_cap": "3357369434112",
+        "shares_outstanding": "15204100096",
+        "earnings_per_share": "6.56",
+        "price_earnings_ratio": "33.661587"
+    },
+    {
+        "id": "2024-08-20_RCL",
+        "ticker": "RCL",
+        "request_timestamp": "2024-08-20T00:00:00",
+        "company_name": "Royal Caribbean Cruises Ltd.",
+        "sector": "Consumer Cyclical",
+        "industry": "Leisure",
+        "country": "United States",
+        "current_price": "161.43",
+        "market_cap": "41555308544",
+        "shares_outstanding": "257420000",
+        "earnings_per_share": "9.17",
+        "price_earnings_ratio": "17.604143"
+    }
+]

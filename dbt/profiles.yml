@@ -1,0 +1,11 @@
+stock_evaluation:
+  target: dev
+
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: whatever-your-project-is
+      dataset: my_dataset # only a dummy default value
+      threads: 4
+      location: europe-west1
