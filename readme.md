@@ -59,7 +59,3 @@ The Stock Evaluation Project is designed to fetch, process, and analyze stock da
 
 - The project is set up for CI/CD using GitHub Actions. Upon pushing changes to the master branch, the application will automatically build and deploy to Google Cloud Run.
 - You need to put credentials for the CI/CD service account into the Github secrets (`GCP_CREDENTIALS` and `GCP_PROJECT_ID`)
-
-### TODOs
-
-- stop allowing unauthenticated calls to Cloud Run

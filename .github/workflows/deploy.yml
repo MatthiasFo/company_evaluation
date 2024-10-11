@@ -37,6 +37,6 @@ jobs:
       run: docker push europe-west1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/stock-eval-repo/stock-evaluation
 
     - name: Deploy to Google Cloud Run
-      run: gcloud run deploy stock-eval-service --image europe-west1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/stock-eval-repo/stock-evaluation --platform managed --region europe-west1 --allow-unauthenticated --memory 1024Mi --max-instances=2
+      run: gcloud run deploy stock-eval-service --image europe-west1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/stock-eval-repo/stock-evaluation --platform managed --region europe-west1 --memory 1024Mi --max-instances=2
 
 
