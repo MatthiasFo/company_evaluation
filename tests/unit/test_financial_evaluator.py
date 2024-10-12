@@ -122,6 +122,7 @@ def test_evaluate_current_value(financial_evaluator: FinancialEvaluator):
     result = financial_evaluator.get_current_evaluation()
 
     expected_columns = [
+        "id",
         "ticker",
         "company_name",
         "country",

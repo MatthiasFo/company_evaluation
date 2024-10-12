@@ -6,6 +6,11 @@ resource "google_bigquery_table" "intrinsic_value_and_ratio_evaluations" {
   schema              = <<EOF
 [
     {
+        "name": "id",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
         "name": "ticker",
         "type": "STRING",
         "mode": "REQUIRED"

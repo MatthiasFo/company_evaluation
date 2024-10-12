@@ -69,7 +69,7 @@ class FinancialEvaluator:
         )
 
         ratios_trends_dcf_sector = ratios_trends_dcf.merge(
-            self._fin_stmts.loc[:, ["ticker", "sector", "country", "company_name", "industry"]], on="ticker"
+            self._fin_stmts.loc[:, ["id", "ticker", "sector", "country", "company_name", "industry"]], on="ticker"
         )
 
         ratios_trends_dcf_competition = ratios_trends_dcf_sector.merge(
