@@ -70,10 +70,7 @@ class MockBigQueryDataMartAdapter(DataMartPort):
     def get_remaining_tickers_for_yahoo_scraper(self):
         return []
 
-    def get_combined_financial_filings(self):
-        return pd.DataFrame()
-
-    def get_latest_company_infos(self):
+    def get_dcf_base_data(self):
         return pd.DataFrame()
 
 

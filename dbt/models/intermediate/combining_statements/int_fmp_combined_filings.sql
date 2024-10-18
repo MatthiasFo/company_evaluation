@@ -17,12 +17,10 @@ with combined_filings as (
         balance_sheets.current_liabilities,
         balance_sheets.inventory,
         balance_sheets.long_term_debt,
-        growths.revenue_growth,
-        growths.weighted_average_shares_diluted_growth as shares_growth
+        balance_sheets.outstanding_shares
     from {{ ref( 'stg_fmp_income_stmts' ) }} as income_stmts
     inner join {{ ref( 'stg_fmp_cashflows' ) }} as cashflows on income_stmts.id = cashflows.id
     inner join {{ ref( 'stg_fmp_balance_sheets' ) }} as balance_sheets on income_stmts.id = balance_sheets.id
-    inner join {{ref('stg_fmp_financial_growths')}} as growths on income_stmts.id = growths.id
 )
 
 select * from combined_filings

@@ -51,10 +51,7 @@ class MockBigQueryDataMartAdapter(DataMartPort):
             "AAPL",
         ]
 
-    def get_combined_financial_filings(self):
-        assert False
-
-    def get_latest_company_infos(self):
+    def get_dcf_base_data(self):
         assert False
 
 

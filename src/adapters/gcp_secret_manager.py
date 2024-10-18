@@ -2,7 +2,7 @@ from google.cloud import secretmanager
 
 
 class GcpSecretManager:
-    _gcp_project_id = "whatever-your-project-is"
+    _gcp_project_id = "your-own-project-id"
     _client = None
 
     def __init__(self):

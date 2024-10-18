@@ -17,7 +17,6 @@ class DCFModel:
     def __init__(self, base_data: pd.DataFrame):
         # The base data must contain the following columns:
         # ticker (index)
-        # current_price,
         # free_cash_flow,
         # revenue_growth,
         # shares_outstanding,
@@ -45,22 +44,8 @@ class DCFModel:
             },
         }
 
-    def estimate_intrinsic_value(self):
-        # The base data must contain the following columns:
-        # id,
-        # ticker
-        # request_timestamp,
-        # company_name,
-        # sector,
-        # industry,
-        # country,
-        # current_price,
-        # free_cash_flow,
-        # revenue_growth,
-        # shares_outstanding,
-
+    def estimate_intrinsic_value(self) -> pd.DataFrame:
         # taken from book "five rules for successful stock investing" (kindl) page 146-147
-
         anual_cashflow = self.base_data["free_cash_flow"]
         revenue_growth = self.base_data["revenue_growth"]
         shares_outstanding = self.base_data["shares_outstanding"]
@@ -76,11 +61,7 @@ class DCFModel:
         proper_evaluations = self.base_data.loc[
             (self.base_data.loc[:, [x for x in self.model_configs.keys()]] > 0).any(axis=1)
         ].copy()
-
-        proper_evaluations["current_price_over_normal_dcf"] = (
-            proper_evaluations["current_price"] / proper_evaluations["normal"]
-        )
-        return proper_evaluations.reset_index("ticker")
+        return proper_evaluations
 
     def _generate_growth_forecast(self, revenue_growth: pd.DataFrame, config: GrowthForecastConfig) -> pd.DataFrame:
         # generate a growth rate for each stock over time

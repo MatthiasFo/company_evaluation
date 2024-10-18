@@ -1,0 +1,134 @@
+version: 2
+
+models:
+  - name: int_multiple_valuations
+    description: "Intermediate model for multiple valuations"
+    columns:
+      - name: filing_id
+        data_tests:
+          - not_null
+          - unique
+      - name: ticker
+        data_tests:
+          - not_null
+      - name: end_of_period
+        data_tests:
+          - not_null
+      - name: price_to_sales_ratio
+        data_tests:
+          - not_null
+      - name: price_to_book_ratio
+        data_tests:
+          - not_null
+      - name: price_to_dcf_normal_evaluation
+      - name: earnings_yield
+        data_tests:
+          - not_null
+      - name: cash_return
+      - name: price_earnings_ratio
+
+  - name: int_financial_health_evaluation
+    description: "Intermediate model for financial health evaluation"
+    columns:
+      - name: filing_id
+        data_tests:
+          - not_null
+          - unique
+      - name: ticker
+        data_tests:
+          - not_null
+      - name: end_of_period
+        data_tests:
+          - not_null
+      - name: financial_health_score
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1, 2, 3]
+              quote: false
+
+  - name: int_management_evaluation
+    description: "Intermediate model for management evaluation"
+    columns:
+      - name: filing_id
+        data_tests:
+          - not_null
+          - unique
+      - name: ticker
+        data_tests:
+          - not_null
+      - name: end_of_period
+        data_tests:
+          - not_null
+      - name: management_score
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1, 2]
+              quote: false
+
+  - name: int_efficiency_evaluation
+    description: "Intermediate model for efficiency evaluation"
+    columns:
+      - name: filing_id
+        data_tests:
+          - not_null
+          - unique
+      - name: ticker
+        data_tests:
+          - not_null
+      - name: end_of_period
+        data_tests:
+          - not_null
+      - name: efficiency_score
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1, 2]
+              quote: false
+
+  - name: int_guideline_evaluation
+    description: "Intermediate model for guideline evaluation"
+    columns:
+      - name: filing_id
+        data_tests:
+          - not_null
+          - unique
+      - name: ticker
+        data_tests:
+          - not_null
+      - name: moat_score
+        data_tests:
+          - not_null
+      - name: financial_health_score
+        data_tests:
+          - not_null:
+              config:
+                severity: warn # some companies do not report the necessary data for financial health
+      - name: efficiency_score
+        # based on trends and trends are null in first filing (no diff possible)
+      - name: management_score
+        # based on trends and trends are null in first filing (no diff possible)
+      - name: total_score
+        data_tests:
+          - not_null
+
+  - name: int_moat_evaluation
+    description: "Intermediate model for moat evaluation"
+    columns:
+      - name: filing_id
+        data_tests:
+          - not_null
+          - unique
+      - name: ticker
+        data_tests:
+          - not_null
+      - name: end_of_period
+        data_tests:
+          - not_null
+      - name: moat_score
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1, 2, 3, 4]
+              quote: false

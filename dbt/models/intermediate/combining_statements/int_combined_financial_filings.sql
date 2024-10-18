@@ -18,8 +18,7 @@ with combined_filings as (
         current_liabilities,
         inventory,
         long_term_debt,
-        revenue_growth,
-        shares_growth
+        outstanding_shares
     from {{ ref('int_fmp_combined_filings') }}
     union all
     select
@@ -40,8 +39,7 @@ with combined_filings as (
         current_liabilities,
         inventory,
         long_term_debt,
-        revenue_growth,
-        shares_growth
+        outstanding_shares
     from {{ ref('int_alphavantage_combined_filings') }}
     union all
     select
@@ -62,8 +60,7 @@ with combined_filings as (
         current_liabilities,
         inventory,
         long_term_debt,
-        revenue_growth,
-        shares_growth
+        outstanding_shares
     from {{ ref('int_yahoo_filings_annually') }}
 -- disregard quarterly filings as they rarely provide additional information (to often it is only a single quarter)
 ),
@@ -93,8 +90,7 @@ select
     current_liabilities,
     inventory,
     long_term_debt,
-    revenue_growth,
-    shares_growth
+    outstanding_shares
 from combined_filings_with_row_number_for_deduplication
 where rn = 1
     and total_revenue > 0 -- with 0 or null revenue we cannot calculate ratios

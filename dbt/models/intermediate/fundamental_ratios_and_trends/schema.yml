@@ -1,0 +1,90 @@
+version: 2
+
+models:
+  - name: int_fundamental_ratios
+    description: "Intermediate model containing various financial ratios calculated from company filings"
+    columns:
+      - name: filing_id
+        description: "Unique identifier for each filing"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol of the company"
+        data_tests:
+          - not_null
+      - name: end_of_period
+        description: "End date of the financial period"
+        data_tests:
+          - not_null
+      - name: country
+        description: "Country where the company is based"
+      - name: sector
+        description: "Sector of the company"
+      - name: net_margin_over_revenue
+        description: "Net income divided by total revenue"
+        data_tests:
+          - not_null
+      - name: free_cash_flow_over_revenue
+        description: "Free cash flow divided by total revenue"
+        data_tests:
+          - not_null
+      - name: return_on_assets
+        description: "Net income divided by total assets"
+        data_tests:
+          - not_null
+      - name: return_on_equity
+        description: "Net income divided by stockholders' equity"
+        data_tests:
+          - not_null
+      - name: asset_turnover_ratio
+        description: "Total revenue divided by total assets"
+        data_tests:
+          - not_null
+      - name: inventory_turnover_ratio
+        description: "Cost of goods sold divided by inventory"
+      - name: inventory_over_revenue
+        description: "Inventory divided by total revenue"
+      - name: sga_over_revenue
+        description: "Selling, general, and administrative expenses divided by total revenue"
+      - name: current_ratio
+        description: "Current assets divided by current liabilities"
+      - name: quick_ratio
+        description: "(Current assets - inventory) divided by current liabilities"
+      - name: fin_leverage
+        description: "Total assets divided by stockholders' equity"
+        data_tests:
+          - not_null
+      - name: accounts_receivable_over_revenue
+        description: "Accounts receivable divided by total revenue"
+
+  - name: int_fundamental_trends
+    description: "Intermediate model containing trend calculations for various financial metrics"
+    columns:
+      - name: filing_id
+        description: "Unique identifier for each filing"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol of the company"
+        data_tests:
+          - not_null
+      - name: end_of_period
+        description: "End date of the financial period"
+        data_tests:
+          - not_null
+      - name: country
+        description: "Country where the company is based"
+      - name: sector
+        description: "Sector of the company"
+      - name: revenue_growth
+        description: "Year-over-year revenue growth rate"
+      - name: shares_growth
+        description: "Year-over-year growth rate of outstanding shares"
+      - name: sga_over_revenue_change
+        description: "Year-over-year change in SG&A expenses as a percentage of revenue"
+      - name: inventory_over_revenue_change
+        description: "Year-over-year change in inventory as a percentage of revenue"
+      - name: accounts_receivable_over_revenue_change
+        description: "Year-over-year change in accounts receivable as a percentage of revenue"

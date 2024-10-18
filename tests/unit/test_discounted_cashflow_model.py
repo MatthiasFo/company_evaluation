@@ -8,13 +8,13 @@ def mock_info_data():
     return pd.DataFrame(
         [
             {
+                "id": "1",
                 "ticker": "AAPL",
-                "current_price": 220.82,
                 "shares_outstanding": 15204100096,
             },
             {
+                "id": "2",
                 "ticker": "RCL",
-                "current_price": 161.43,
                 "shares_outstanding": 257420000,
             },
         ]
@@ -29,20 +29,23 @@ def test_discounted_cashflow_model_basic(mock_info_data):
         ]
     )
 
-    base_data = mock_filing_data.merge(mock_info_data, how="left", on="ticker").set_index("ticker")
+    base_data = mock_filing_data.merge(mock_info_data, how="left", on="ticker")
     dcf_model = DCFModel(base_data)
 
     result = dcf_model.estimate_intrinsic_value()
 
     assert set(result.columns) == set(
-        ["ticker", "current_price", "shares_outstanding", "free_cash_flow", "revenue_growth"]
-        + [
+        [
+            "id",
+            "ticker",
+            "shares_outstanding",
+            "revenue_growth",
+            "free_cash_flow",
             "normal",
             "stable",
             "stable_and_strong_growth",
             "volatile",
             "volatile_and_weak_growth",
-            "current_price_over_normal_dcf",
         ]
     )
     assert not result.isna().any().any()
@@ -81,7 +84,7 @@ def test_discounted_cashflow_model_normal_case_result(mock_info_data):
     dcf_model = DCFModel(base_data)
 
     result = dcf_model.estimate_intrinsic_value()
-    assert result["normal"][0] == pytest.approx(76.3836, rel=1e-2)
+    assert result["normal"].iloc[0] == pytest.approx(76.3836, rel=1e-2)
 
 
 if __name__ == "__main__":

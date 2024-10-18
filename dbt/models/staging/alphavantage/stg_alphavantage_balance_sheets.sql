@@ -10,7 +10,7 @@ with source_data as (
         currentdebt as current_liabilities,
         inventory,
         longtermdebt as long_term_debt,
-        commonStockSharesOutstanding as outstanding_shares,
+        commonstocksharesoutstanding as outstanding_shares,
         fiscaldateending as end_of_period
     from {{ source('alphavantage', 'balance_sheets_annually') }}
 )

@@ -4,8 +4,8 @@ resource "google_bigquery_dataset" "yahoo_finance_dataset" {
   location   = var.region
 }
 
-resource "google_bigquery_dataset" "curated_dataset" {
-  dataset_id = "curated_data"
+resource "google_bigquery_dataset" "dcf_model_dataset" {
+  dataset_id = "dcf_model"
   project    = var.project_id
   location   = var.region
 }

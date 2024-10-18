@@ -1,6 +1,41 @@
 version: 2
 
 sources:
+  - name: dcf_model
+    description: Output of discounted cashflow model from python
+    tables:
+      - name: dcf_model_evaluations
+        columns:
+          - name: id
+            description: id of the current company information the results are based on
+            data_type: STRING
+          - name: ticker
+            description: company stock ticker
+            data_type: STRING
+          - name: shares_outstanding
+            description: input data for model (averaged)
+            data_type: INTEGER
+          - name: revenue_growth
+            description: input data for model (averaged)
+            data_type: FLOAT
+          - name: free_cash_flow
+            description: input data for model (averaged)
+            data_type: FLOAT
+          - name: normal
+            description: intrinsic valuation stock price under normal conditions
+            data_type: FLOAT
+          - name: stable
+            description: intrinsic valuation stock price under particularly stable conditions
+            data_type: FLOAT
+          - name: stable_and_strong_growth
+            description: intrinsic valuation stock price under stable conditions and strong economic growth
+            data_type: FLOAT
+          - name: volatile
+            description: intrinsic valuation stock price under volatile conditions
+            data_type: FLOAT
+          - name: volatile_and_weak_growth
+            description: intrinsic valuation stock price under volatile conditions with weak economic growth
+            data_type: FLOAT
   - name: financial_modeling_prep
     description: Raw data from the financial modeling prep API
     tables:
@@ -764,155 +799,6 @@ sources:
           - name: total_unusual_items_excluding_goodwill
             description: ""
             data_type: FLOAT
-
-        columns:
-          - name: unrealized_gain_loss_on_investment_securities
-            description: ""
-            data_type: FLOAT
-          - name: purchase_of_investment_properties
-            description: ""
-            data_type: FLOAT
-          - name: sale_of_investment_properties
-            description: ""
-            data_type: FLOAT
-          - name: net_investment_properties_purchase_and_sale
-            description: ""
-            data_type: FLOAT
-          - name: interest_paid_cff
-            description: ""
-            data_type: FLOAT
-          - name: change_in_prepaid_assets
-            description: ""
-            data_type: FLOAT
-          - name: gain_loss_on_sale_of_ppe
-            description: ""
-            data_type: FLOAT
-          - name: dividend_received_cfo
-            description: ""
-            data_type: FLOAT
-          - name: change_in_income_tax_payable
-            description: ""
-            data_type: FLOAT
-          - name: receiptsfrom_customers
-            description: ""
-            data_type: FLOAT
-          - name: depreciation
-            description: ""
-            data_type: FLOAT
-          - name: classesof_cash_receiptsfrom_operating_activities
-            description: ""
-            data_type: FLOAT
-          - name: cash_flowsfromusedin_operating_activities_direct
-            description: ""
-            data_type: FLOAT
-          - name: earnings_losses_from_equity_investments
-            description: ""
-            data_type: FLOAT
-          - name: purchase_of_intangibles
-            description: ""
-            data_type: FLOAT
-          - name: sale_of_business
-            description: ""
-            data_type: FLOAT
-          - name: net_issuance_payments_of_debt
-            description: ""
-            data_type: FLOAT
-          - name: other_cash_paymentsfrom_operating_activities
-            description: ""
-            data_type: FLOAT
-          - name: asset_impairment_charge
-            description: ""
-            data_type: FLOAT
-          - name: income_tax_paid_supplemental_data
-            description: ""
-            data_type: FLOAT
-          - name: short_term_debt_issuance
-            description: ""
-            data_type: FLOAT
-          - name: short_term_debt_payments
-            description: ""
-            data_type: FLOAT
-          - name: cash_from_discontinued_operating_activities
-            description: ""
-            data_type: FLOAT
-          - name: sale_of_intangibles
-            description: ""
-            data_type: FLOAT
-          - name: cash_from_discontinued_investing_activities
-            description: ""
-            data_type: FLOAT
-          - name: pension_and_employee_benefit_expense
-            description: ""
-            data_type: FLOAT
-          - name: deferred_income_tax
-            description: ""
-            data_type: FLOAT
-          - name: issuance_of_debt
-            description: ""
-            data_type: FLOAT
-          - name: change_in_other_current_liabilities
-            description: ""
-            data_type: FLOAT
-          - name: repurchase_of_capital_stock
-            description: ""
-            data_type: FLOAT
-          - name: taxes_refund_paid
-            description: ""
-            data_type: FLOAT
-          - name: end_cash_position
-            description: ""
-            data_type: FLOAT
-          - name: capital_expenditure_reported
-            description: ""
-            data_type: FLOAT
-          - name: common_stock_dividend_paid
-            description: ""
-            data_type: FLOAT
-          - name: net_intangibles_purchase_and_sale
-            description: ""
-            data_type: FLOAT
-          - name: long_term_debt_issuance
-            description: ""
-            data_type: FLOAT
-          - name: net_short_term_debt_issuance
-            description: ""
-            data_type: FLOAT
-          - name: cash_dividends_paid
-            description: ""
-            data_type: FLOAT
-          - name: other_cash_adjustment_outside_changein_cash
-            description: ""
-            data_type: FLOAT
-          - name: industry
-            description: ""
-            data_type: STRING
-          - name: other_cash_receiptsfrom_operating_activities
-            description: ""
-            data_type: FLOAT
-          - name: net_income_from_continuing_operations
-            description: ""
-            data_type: FLOAT
-          - name: classesof_cash_payments
-            description: ""
-            data_type: FLOAT
-          - name: other_cash_adjustment_inside_changein_cash
-            description: ""
-            data_type: FLOAT
-          - name: net_foreign_currency_exchange_gain_loss
-            description: ""
-            data_type: FLOAT
-          - name: interest_paid_supplemental_data
-            description: ""
-            data_type: FLOAT
-          - name: change_in_accrued_expense
-            description: ""
-            data_type: FLOAT
-          - name: cash_flow_from_continuing_investing_activities
-            description: ""
-            data_type: FLOAT
-          - name: deferred_tax
-            description: ""
-            data_type: FLOAT
       - name: income_statement_yearly
         columns:
           - name: rent_expense_supplemental
@@ -1062,7 +948,6 @@ sources:
           - name: total_unusual_items_excluding_goodwill
             description: ""
             data_type: FLOAT
-      
       - name: company_info
         columns:
           - name: address2

@@ -1,0 +1,128 @@
+version: 2
+
+models:
+  - name: int_fmp_company_infos
+    description: Intermediate model for FMP company information
+    columns:
+      - name: id
+        description: Unique identifier for the company
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: Stock ticker symbol
+        data_tests:
+          - not_null
+      - name: request_timestamp
+        description: Timestamp of the data request
+        data_tests:
+          - not_null
+      - name: company_name
+        description: Name of the company
+      - name: sector
+        description: sector of the company
+      - name: country
+        description: Country of the company
+      - name: current_price
+        description: Current stock price
+      - name: market_cap
+        description: Market capitalization
+      - name: shares_outstanding
+        description: Number of outstanding shares
+      - name: earnings_per_share
+        description: Earnings per share
+      - name: price_earnings_ratio
+        description: Price to earnings ratio
+
+  - name: int_yahoo_company_infos
+    description: Intermediate model for Yahoo company information
+    columns:
+      - name: id
+        description: Unique identifier for the company
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: Stock ticker symbol
+        data_tests:
+          - not_null
+      - name: request_timestamp
+        description: Timestamp of the data request
+        data_tests:
+          - not_null
+      - name: company_name
+        description: Name of the company
+      - name: sector
+        description: sector of the company
+        data_tests:
+          - not_null
+      - name: country
+        description: Country of the company
+        data_tests:
+          - not_null
+      - name: current_price
+        description: Current stock price
+      - name: market_cap
+        description: Market capitalization
+      - name: shares_outstanding
+        description: Number of outstanding shares
+      - name: earnings_per_share
+        description: Earnings per share
+      - name: price_earnings_ratio
+        description: Price to earnings ratio
+
+  - name: int_current_company_infos
+    description: "Latest company information from FMP and Yahoo sources"
+    columns:
+      - name: id
+        description: "Unique identifier for the company info record"
+        data_tests:
+          - unique
+          - not_null
+      - name: ticker
+        description: "Stock ticker symbol of the company"
+        data_tests:
+          - not_null
+          - unique
+      - name: request_timestamp
+        description: "Timestamp of when the data was requested"
+        data_tests:
+          - not_null
+      - name: company_name
+        description: "Name of the company"
+        data_tests:
+          - not_null
+      - name: industry
+        description: "Industry (more finegrained than sector)"
+        data_tests:
+          - not_null
+      - name: sector
+        description: "Sector (general) that the company operates in"
+        data_tests:
+          - not_null
+      - name: country
+        description: "Home country of the company"
+        data_tests:
+          - not_null
+      - name: current_price
+        description: "Current stock price of the company"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: market_cap
+        description: "Market capitalization of the company"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: shares_outstanding
+        description: "Number of outstanding shares"
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: earnings_per_share
+        description: "Earnings per share (EPS) of the company"
+        # can be calculated from other data -> no datatests
+      - name: price_earnings_ratio
+        description: "Price-to-earnings (P/E) ratio of the company"
+        # can be calculated from other data -> no datatests
+

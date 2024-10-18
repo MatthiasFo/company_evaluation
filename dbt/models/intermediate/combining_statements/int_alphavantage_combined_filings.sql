@@ -1,36 +1,4 @@
-with current_and_last_revenues as (
-    select
-        id,
-        total_revenue,
-        lag(total_revenue) over (partition by ticker order by end_of_period) as last_revenue
-    from {{ ref( 'stg_alphavantage_income_stmts' ) }}
-),
-
-revenue_growths as (
-    select
-        id,
-        (total_revenue - last_revenue) / last_revenue as revenue_growth
-    from current_and_last_revenues
-    where last_revenue > 0
-),
-
-current_and_last_shares as (
-    select
-        id,
-        outstanding_shares as current_shares,
-        lag(outstanding_shares) over (partition by ticker order by end_of_period) as last_shares
-    from {{ ref( 'stg_alphavantage_balance_sheets' ) }}
-),
-
-share_growths as (
-    select
-        id,
-        (current_shares - last_shares) / last_shares as shares_growth
-    from current_and_last_shares
-    where last_shares > 0
-),
-
-combined_filings as (
+with combined_filings as (
     select
         income_stmts.ticker,
         income_stmts.end_of_period,
@@ -47,8 +15,7 @@ combined_filings as (
         balance_sheets.current_liabilities,
         balance_sheets.inventory,
         balance_sheets.long_term_debt,
-        rev_growths.revenue_growth,
-        share_growths.shares_growth,
+        balance_sheets.outstanding_shares,
         cashflows.dividends_paid,
         -- make it compatible with the FMP filings
         extract(year from income_stmts.end_of_period) || '_FY_' || income_stmts.ticker as filing_id
@@ -57,8 +24,6 @@ combined_filings as (
     inner join
         {{ ref( 'stg_alphavantage_balance_sheets' ) }} as balance_sheets
         on income_stmts.id = balance_sheets.id
-    left join revenue_growths as rev_growths on income_stmts.id = rev_growths.id
-    left join share_growths as share_growths on income_stmts.id = share_growths.id
 )
 
 select * from combined_filings

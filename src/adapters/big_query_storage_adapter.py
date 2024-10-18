@@ -10,7 +10,7 @@ class BigQueryStorageDataset(Enum):
     YAHOO = "yahoo_finance"
     FMP = "financial_modeling_prep"
     ALPHAVANTAGE = "alphavantage"
-    CURATED_DATA = "curated_data"
+    DCF_MODEL = "dcf_model"
 
 
 class YahooTableName(Enum):
@@ -42,7 +42,7 @@ class FmpTableName(Enum):
 
 
 class BigQueryStorageAdapter(DatastoragePort):
-    _project_id = "whatever-your-project-is"
+    _project_id = "your-own-project-id"
     _dataset_name = None
     _dataset = None
     _client = None

@@ -17,9 +17,5 @@ class DataMartPort(ABC):
         pass
 
     @abstractmethod
-    def get_combined_financial_filings(self) -> pd.DataFrame:
-        pass
-
-    @abstractmethod
-    def get_latest_company_infos(self) -> pd.DataFrame:
+    def get_dcf_base_data(self) -> pd.DataFrame:
         pass

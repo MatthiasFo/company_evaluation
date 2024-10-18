@@ -24,7 +24,7 @@ resource "google_cloud_scheduler_job" "yahoo_scheduler" {
   name        = "fetch-new-stocks-from-yahoo"
   description = "Scheduler to fetch data from yahoo finance"
 
-  schedule  = "*/15 * * * *"
+  schedule  = "45 */4 * * *"
   time_zone = "UTC"
 
   attempt_deadline = "840s"
